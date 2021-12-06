@@ -1,9 +1,9 @@
 class Student {
-    private String name, branch, course, section, residence;
+    private String name, branch, course, section, residence, registrationNumber;
     private double GPA;
-    private int year, registrationNumber[9];
+    private int year;
 
-    public Student(String name, String branch, String course, String section, String residence, double GPA, int year, int[] registrationNumber) {
+    public Student(String name, String branch, String course, String section, String residence, double GPA, int year, String registrationNumber) {
         this.name = name;
         this.branch = branch;
         this.course = course;
@@ -42,21 +42,19 @@ class Student {
         return year;
     }
 
-    public int[] getRegistrationNumber() {
+    public String getRegistrationNumber() {
         return registrationNumber;
     }
 }
 
-class QualifyingStudent extends Student{
+class QualifyingStudent extends Student {
 
     private boolean isQualifying;
     private int voteCount;
 
-    public QualifyingStudent(String name, double GPA, boolean isQualifying, int voteCount) {
-        super(name, GPA);
+    public QualifyingStudent(String name, String branch, String course, String section, String residence, double GPA, int year, String registrationNumber, boolean isQualifying, int voteCount) {
+        super(name, branch, course, section, residence, GPA, year, registrationNumber);
         this.isQualifying = isQualifying;
         this.voteCount = voteCount;
     }
-
-
 }
