@@ -90,5 +90,30 @@ class Main {
                         "Kartik", "CCE", "B.Tech", "A", true, 8.1, 3, "199303022"
                 )
         );
+
+        ArrayList<QualifyingStudent> qualifyingStudents = new ArrayList<>();
+        for(int i = 0; i < studentList.size(); i++)
+        {
+            Student temp = studentList.get(i);
+            if(temp.getGPA() >= 8.5)
+            {
+                qualifyingStudents.add(
+                        new QualifyingStudent(
+                                temp.getName(),
+                                temp.getBranch(),
+                                temp.getCourse(),
+                                temp.getSection(),
+                                temp.getResidence(),
+                                temp.getGPA(),
+                                temp.getYear(),
+                                temp.getRegistrationNumber(),
+                                true,
+                                0
+                        )
+                );
+            }
+        }
+
+
     }
 }
