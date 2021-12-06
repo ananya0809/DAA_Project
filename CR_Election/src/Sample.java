@@ -55,10 +55,9 @@ class QualifyingStudent extends Student {
     private boolean isQualifying;
     private int voteCount;
 
-    public QualifyingStudent(String name, String branch, String course, String section, boolean isHosteller, double GPA, int year, String registrationNumber, boolean isQualifying, int voteCount) {
-        super(name, branch, course, section, isHosteller, GPA, year, registrationNumber);
-        this.isQualifying = isQualifying;
-        this.voteCount = voteCount;
+    public QualifyingStudent(Student student) {
+        super(student.getName(), student.getBranch(), student.getCourse(), student.getSection(), true, student.getGPA(), student.getYear(), student.getRegistrationNumber());
+        this.voteCount = 0;
     }
 }
 
@@ -92,23 +91,12 @@ class Main {
         );
 
         ArrayList<QualifyingStudent> qualifyingStudents = new ArrayList<>();
-        for(int i = 0; i < studentList.size(); i++)
-        {
+        for (int i = 0; i < studentList.size(); i++) {
             Student temp = studentList.get(i);
-            if(temp.getGPA() >= 8.5)
-            {
+            if (temp.getGPA() >= 8.5) {
                 qualifyingStudents.add(
                         new QualifyingStudent(
-                                temp.getName(),
-                                temp.getBranch(),
-                                temp.getCourse(),
-                                temp.getSection(),
-                                temp.getResidence(),
-                                temp.getGPA(),
-                                temp.getYear(),
-                                temp.getRegistrationNumber(),
-                                true,
-                                0
+                                temp
                         )
                 );
             }
