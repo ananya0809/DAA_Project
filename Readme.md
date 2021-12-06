@@ -24,3 +24,7 @@
 ### Qualification criteria
 - Must be a day scholar
 - Should have 8.5 GPA
+
+### Voting Process
+- All students must vote
+- The student with highest vote would be the CR
