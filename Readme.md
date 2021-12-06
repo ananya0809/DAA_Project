@@ -20,3 +20,7 @@
 ### Qualified Student (Extended from Base Student)
 - Is Qualified ?
 - Votes
+
+### Qualification criteria
+- Must be a day scholar
+- Should have 8.5 GPA
