@@ -6,6 +6,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,9 +41,7 @@ fun start() {
 @Composable
 @Preview
 fun studentList() {
-    val sampleStudents = remember {
-        arrayListOf<Student>()
-    }
+    val sampleStudents = mutableStateListOf<Student>()
     sampleStudents.add(Student("Name 1", "1222"))
     sampleStudents.add(Student("Name 2", "1222"))
     sampleStudents.add(Student("Name 3", "1222"))
@@ -55,10 +55,18 @@ fun studentList() {
                         Text(text = "Registration No.", style = MaterialTheme.typography.h5)
                     }
                 }
-                items(sampleStudents) { std ->
-                    Row {
+                items(items = sampleStudents) { std ->
+                    Row(modifier = Modifier.fillMaxSize()) {
                         Text(text = std.name, modifier = Modifier.padding(horizontal = 24.dp))
                         Text(text = std.regNum, modifier = Modifier.padding(horizontal = 24.dp))
+                    }
+                }
+                item {
+                    Button(onClick = {
+                        sampleStudents.add(Student("Added", "Sample"))
+
+                    }) {
+                        Text("+ Add")
                     }
                 }
             }
