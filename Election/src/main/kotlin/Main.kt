@@ -46,6 +46,7 @@ fun studentList() {
     sampleStudents.add(Student("Name 2", "1222"))
     sampleStudents.add(Student("Name 3", "1222"))
     MaterialTheme {
+        // TODO : Figure out a way to make Add button position constant and independent
         Column {
             LazyColumn {
                 item {
@@ -61,16 +62,12 @@ fun studentList() {
                         Text(text = std.regNum, modifier = Modifier.padding(horizontal = 24.dp))
                     }
                 }
-                item {
-                    Button(onClick = {
-                        sampleStudents.add(Student("Added", "Sample"))
-
-                    }) {
-                        Text("+ Add")
-                    }
-                }
             }
-
+            Button(onClick = {
+                sampleStudents.add(Student("Added", "Sample"))
+            }) {
+                Text("+ Add")
+            }
         }
     }
 }
