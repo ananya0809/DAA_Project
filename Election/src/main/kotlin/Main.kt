@@ -7,11 +7,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
@@ -51,7 +48,10 @@ fun studentList() {
             LazyColumn {
                 item {
                     // TODO : Fix spacing between titles and items
-                    Row (horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxSize().padding(24.dp)) {
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxSize().padding(24.dp)
+                    ) {
                         Text(text = "Name", style = MaterialTheme.typography.h5)
                         Text(text = "Registration No.", style = MaterialTheme.typography.h5)
                     }
