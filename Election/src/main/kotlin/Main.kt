@@ -13,7 +13,7 @@ import androidx.compose.ui.window.application
 
 @Composable
 @Preview
-fun Start() {
+fun start() {
     MaterialTheme {
         MaterialTheme {
             Column(
@@ -35,6 +35,6 @@ fun Start() {
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        Start()
+        start()
     }
 }
