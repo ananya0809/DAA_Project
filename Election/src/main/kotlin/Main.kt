@@ -6,6 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
@@ -37,8 +38,8 @@ fun start() {
 fun studentList() {
     MaterialTheme {
         Row (horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxSize().padding(24.dp)) {
-            Text("Name")
-            Text("Registration No.")
+            Text(text = "Name", style = MaterialTheme.typography.h5)
+            Text(text = "Registration No.", style = MaterialTheme.typography.h5)
         }
     }
 }
