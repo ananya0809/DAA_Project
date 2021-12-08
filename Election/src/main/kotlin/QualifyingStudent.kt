@@ -1,4 +1,6 @@
+import androidx.compose.runtime.MutableState
+
 data class QualifyingStudent(
     val student: Student,
-    val votes: Int
+    val votes: MutableState<Int>
 )
