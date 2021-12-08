@@ -50,10 +50,76 @@ val sampleStudents = mutableStateListOf<Student>()
 @Composable
 @Preview
 fun TotalStudentList() {
+    val name = mutableStateOf("")
+    val regNum = mutableStateOf("")
+    val branch = mutableStateOf("")
+    val course = mutableStateOf("")
+    val year = mutableStateOf("")
+    val section = mutableStateOf("")
+    val gpa = mutableStateOf("0.0")
+
     MaterialTheme {
         // TODO : Figure out a way to make Add button position constant and independent
         Column {
             LazyColumn {
+                item {
+                    Row {
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = name.value, onValueChange = {
+                                name.value = it
+                            },
+                            label = {
+                                Text("Name")
+                            }
+                        )
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = regNum.value, onValueChange = {
+                                regNum.value = it
+                            },
+                            label = {
+                                Text("Reg Num")
+                            }
+                        )
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = branch.value, onValueChange = {
+                                branch.value = it
+                            },
+                            label = {
+                                Text("Branch")
+                            }
+                        )
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = course.value, onValueChange = {
+                                course.value = it
+                            },
+                            label = {
+                                Text("Course")
+                            }
+                        )
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = year.value, onValueChange = {
+                                year.value = it
+                            },
+                            label = {
+                                Text("Year")
+                            }
+                        )
+                        TextField(
+                            modifier = Modifier.width(128.dp),
+                            value = gpa.value, onValueChange = {
+                                gpa.value = it
+                            },
+                            label = {
+                                Text("GPA")
+                            }
+                        )
+                    }
+                }
                 item {
                     // TODO : Fix spacing between titles and items
                     Row(
@@ -76,7 +142,7 @@ fun TotalStudentList() {
                 modifier = Modifier.fillMaxSize().padding(24.dp),
             ) {
                 Button(onClick = {
-                    sampleStudents.add(Student("Added", "Sample", "ABc", "123", "123", "!23", 9.1, false))
+                    sampleStudents.add(Student(name.value, regNum.value, branch.value, course.value, year.value, section.value, gpa.value.toDouble(), false))
                 }) {
                     Text("+ Add")
                 }
@@ -211,7 +277,7 @@ fun ShowResult(result: ArrayList<QualifyingStudent>) {
 var currentState = mutableStateOf(0)
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        when(currentState.value) {
+        when (currentState.value) {
             0 -> Start()
             1 -> TotalStudentList()
             2 -> QualifyingStudentList()
