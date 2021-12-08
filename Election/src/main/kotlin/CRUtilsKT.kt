@@ -7,7 +7,7 @@ object CRUtilsKT {
         val qualifyingStudent = arrayListOf<QualifyingStudent>()
         students.forEach {
             if (it.GPA >= GPA_CRITERIA) {
-                qualifyingStudent.add(QualifyingStudent(it, mutableStateOf(0)))
+                qualifyingStudent.add(QualifyingStudent(it, mutableStateOf("0")))
             }
         }
         return qualifyingStudent
@@ -15,7 +15,7 @@ object CRUtilsKT {
 
     fun findCR(students: ArrayList<QualifyingStudent>): QualifyingStudent? {
         val max = students.maxByOrNull {
-            it.votes.value
+            it.votes.value.toInt()
         }
         return max
     }

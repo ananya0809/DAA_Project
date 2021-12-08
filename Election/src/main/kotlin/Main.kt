@@ -228,9 +228,9 @@ fun AskVotes() {
                         Text(text = std.student.regNum, modifier = Modifier.padding(horizontal = 24.dp))
                         TextField(
                             // TODO : Replace index of with something more robus
-                            value = std.votes.value.toString(),
+                            value = std.votes.value,
                             onValueChange = {
-                                std.votes.value = it.toInt()
+                                std.votes.value = it
                             },
                             label = {
                                 Text("Number of Votes")
