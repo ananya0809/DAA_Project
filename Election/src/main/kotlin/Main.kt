@@ -139,15 +139,6 @@ fun QualifyingStudentList() {
 @Composable
 @Preview
 fun AskVotes() {
-    sampleStudents.add(Student("Name 1", "1222"))
-    sampleStudents.add(Student("Name 2", "1222"))
-    sampleStudents.add(Student("Name 3", "1222"))
-
-    sampleStudents.forEach { student ->
-        // Perform this in a separate function and apply qualifying logic
-        qualifyingStudents.add(QualifyingStudent(student, mutableStateOf(0)))
-    }
-
     MaterialTheme {
         // TODO : Figure out a way to make Add button position constant and independent
         Column {
