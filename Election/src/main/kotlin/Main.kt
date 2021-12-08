@@ -18,24 +18,23 @@ import androidx.compose.ui.window.application
 /***
  * Main Start Screen
  */
+//
 @Composable
 @Preview
 fun Start() {
     MaterialTheme {
-        MaterialTheme {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Button(
-                    onClick = {
-                        // Launch
-                        currentState.value++
-                    }
-                ) {
-                    Text("Start")
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = {
+                    // Launch
+                    currentState.value++
                 }
+            ) {
+                Text("Start")
             }
         }
     }
@@ -131,7 +130,7 @@ fun TotalStudentList() {
                     }
                 }
                 items(items = sampleStudents) { std ->
-                    Row(modifier = Modifier.fillMaxSize()) {
+                    Row {
                         Text(text = std.name, modifier = Modifier.padding(horizontal = 24.dp))
                         Text(text = std.regNum, modifier = Modifier.padding(horizontal = 24.dp))
                     }
@@ -142,7 +141,18 @@ fun TotalStudentList() {
                 modifier = Modifier.fillMaxSize().padding(24.dp),
             ) {
                 Button(onClick = {
-                    sampleStudents.add(Student(name.value, regNum.value, branch.value, course.value, year.value, section.value, gpa.value.toDouble(), false))
+                    sampleStudents.add(
+                        Student(
+                            name.value,
+                            regNum.value,
+                            branch.value,
+                            course.value,
+                            year.value,
+                            section.value,
+                            gpa.value.toDouble(),
+                            false
+                        )
+                    )
                 }) {
                     Text("+ Add")
                 }
@@ -173,6 +183,9 @@ fun QualifyingStudentList() {
         // TODO : Figure out a way to make Add button position constant and independent
         Column {
             LazyColumn {
+                item {
+                    Text("Qualifying Students")
+                }
                 item {
                     // TODO : Fix spacing between titles and items
                     Row(
@@ -269,8 +282,7 @@ fun ShowResult(result: QualifyingStudent?) {
                 item {
                     if (result == null) {
                         Text("Unable to Calculate")
-                    }
-                    else {
+                    } else {
                         Text(result.student.name)
                     }
                 }

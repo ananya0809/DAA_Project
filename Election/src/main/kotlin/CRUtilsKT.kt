@@ -5,18 +5,25 @@ object CRUtilsKT {
 
     fun findQualifyingStudents(students: ArrayList<Student>): ArrayList<QualifyingStudent> {
         val qualifyingStudent = arrayListOf<QualifyingStudent>()
-        students.forEach {
-            if (it.GPA >= GPA_CRITERIA) {
-                qualifyingStudent.add(QualifyingStudent(it, mutableStateOf("0")))
+        for (i in 0 until students.size) {
+            val temp = students.get(i)
+            if (temp.GPA >= GPA_CRITERIA) {
+                qualifyingStudent.add(QualifyingStudent(temp, mutableStateOf("0")))
             }
         }
         return qualifyingStudent
     }
 
     fun findCR(students: ArrayList<QualifyingStudent>): QualifyingStudent? {
-        val max = students.maxByOrNull {
-            it.votes.value.toInt()
+        var maxValue = -1
+        var maxStudent = students.get(0)
+        for (i in 0 until students.size) {
+            val temp = students.get(i)
+            if (temp.votes.value.toInt() > maxValue) {
+                maxValue = temp.votes.value.toInt()
+                maxStudent = temp
+            }
         }
-        return max
+        return maxStudent
     }
 }
