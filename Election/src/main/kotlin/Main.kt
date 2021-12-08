@@ -76,7 +76,7 @@ fun TotalStudentList() {
                 modifier = Modifier.fillMaxSize().padding(24.dp),
             ) {
                 Button(onClick = {
-                    sampleStudents.add(Student("Added", "Sample"))
+                    sampleStudents.add(Student("Added", "Sample", "ABc", "123", "123", "!23", 9.1, false))
                 }) {
                     Text("+ Add")
                 }
