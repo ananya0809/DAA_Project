@@ -255,7 +255,7 @@ fun AskVotes() {
 }
 
 @Composable
-fun ShowResult(result: ArrayList<QualifyingStudent>) {
+fun ShowResult(result: QualifyingStudent?) {
     MaterialTheme {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -266,8 +266,13 @@ fun ShowResult(result: ArrayList<QualifyingStudent>) {
                 item {
                     Text("Result :")
                 }
-                items(result) { std ->
-                    Text(std.student.name)
+                item {
+                    if (result == null) {
+                        Text("Unable to Calculate")
+                    }
+                    else {
+                        Text(result.student.name)
+                    }
                 }
             }
         }
@@ -282,7 +287,7 @@ fun main() = application {
             1 -> TotalStudentList()
             2 -> QualifyingStudentList()
             3 -> AskVotes()
-            4 -> ShowResult(qualifyingStudents)
+            4 -> ShowResult(CRUtilsKT.findCR(qualifyingStudents))
             else -> {
                 println("No more screens left!")
             }
