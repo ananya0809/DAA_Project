@@ -35,10 +35,10 @@ fun start() {
     }
 }
 
+val sampleStudents = mutableStateListOf<Student>()
 @Composable
 @Preview
 fun studentList() {
-    val sampleStudents = mutableStateListOf<Student>()
     sampleStudents.add(Student("Name 1", "1222"))
     sampleStudents.add(Student("Name 2", "1222"))
     sampleStudents.add(Student("Name 3", "1222"))
@@ -82,8 +82,51 @@ fun studentList() {
     }
 }
 
+val qualifyingStudents = mutableStateListOf<QualifyingStudent>()
+@Composable
+@Preview
+fun findQualifyingStudent() {
+    sampleStudents.forEach { student ->
+        // Perform this in a separate function and apply qualifying logic
+        qualifyingStudents.add(QualifyingStudent(student, 0))
+    }
+    MaterialTheme {
+        // TODO : Figure out a way to make Add button position constant and independent
+        Column {
+            LazyColumn {
+                item {
+                    // TODO : Fix spacing between titles and items
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxSize().padding(24.dp)
+                    ) {
+                        Text(text = "Name", style = MaterialTheme.typography.h5)
+                        Text(text = "Registration No.", style = MaterialTheme.typography.h5)
+                    }
+                }
+                items(items = qualifyingStudents) { std ->
+                    Row(modifier = Modifier.fillMaxSize()) {
+                        Text(text = std.student.name, modifier = Modifier.padding(horizontal = 24.dp))
+                        Text(text = std.student.regNum, modifier = Modifier.padding(horizontal = 24.dp))
+                    }
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxSize().padding(24.dp),
+            ) {
+                Button(onClick = {
+                    // Go to next Screen
+                }) {
+                    Text("Next")
+                }
+            }
+        }
+    }
+}
+
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        studentList()
+        findQualifyingStudent()
     }
 }
