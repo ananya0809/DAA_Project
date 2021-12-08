@@ -31,6 +31,7 @@ fun Start() {
                 Button(
                     onClick = {
                         // Launch
+                        currentState.value++
                     }
                 ) {
                     Text("Start")
@@ -81,6 +82,7 @@ fun TotalStudentList() {
                 }
                 Button(onClick = {
                     // Go to next Screen
+                    currentState.value++
                 }) {
                     Text("Next")
                 }
@@ -125,6 +127,7 @@ fun QualifyingStudentList() {
             ) {
                 Button(onClick = {
                     // Go to next Screen
+                    currentState.value++
                 }) {
                     Text("Next")
                 }
@@ -182,6 +185,7 @@ fun AskVotes() {
             ) {
                 Button(onClick = {
                     // Go to next Screen
+                    currentState.value++
                 }) {
                     Text("Next")
                 }
@@ -190,8 +194,17 @@ fun AskVotes() {
     }
 }
 
+var currentState = mutableStateOf(0)
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        AskVotes()
+        when(currentState.value) {
+            0 -> Start()
+            1 -> TotalStudentList()
+            2 -> QualifyingStudentList()
+            3 -> AskVotes()
+            else -> {
+                println("No more screens left!")
+            }
+        }
     }
 }
