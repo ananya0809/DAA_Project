@@ -63,10 +63,20 @@ fun studentList() {
                     }
                 }
             }
-            Button(onClick = {
-                sampleStudents.add(Student("Added", "Sample"))
-            }) {
-                Text("+ Add")
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxSize().padding(24.dp),
+            ) {
+                Button(onClick = {
+                    sampleStudents.add(Student("Added", "Sample"))
+                }) {
+                    Text("+ Add")
+                }
+                Button(onClick = {
+                    // Go to next Screen
+                }) {
+                    Text("Next")
+                }
             }
         }
     }
