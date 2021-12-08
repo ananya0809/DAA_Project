@@ -13,9 +13,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
+/***
+ * Main Start Screen
+ */
 @Composable
 @Preview
-fun start() {
+fun Start() {
     MaterialTheme {
         MaterialTheme {
             Column(
@@ -35,10 +38,15 @@ fun start() {
     }
 }
 
+// Sample Student list, will be renamed in future
 val sampleStudents = mutableStateListOf<Student>()
+
+/***
+ * Total Student List Screen
+ */
 @Composable
 @Preview
-fun studentList() {
+fun TotalStudentList() {
     sampleStudents.add(Student("Name 1", "1222"))
     sampleStudents.add(Student("Name 2", "1222"))
     sampleStudents.add(Student("Name 3", "1222"))
@@ -82,10 +90,11 @@ fun studentList() {
     }
 }
 
+// Qualifying Students [Sublist of Total Students]
 val qualifyingStudents = mutableStateListOf<QualifyingStudent>()
 @Composable
 @Preview
-fun findQualifyingStudent() {
+fun QualifyingStudentList() {
     sampleStudents.forEach { student ->
         // Perform this in a separate function and apply qualifying logic
         qualifyingStudents.add(QualifyingStudent(student, 0))
@@ -127,6 +136,6 @@ fun findQualifyingStudent() {
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        findQualifyingStudent()
+        QualifyingStudentList()
     }
 }
