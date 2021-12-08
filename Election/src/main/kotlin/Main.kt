@@ -92,14 +92,17 @@ fun TotalStudentList() {
 }
 
 // Qualifying Students [Sublist of Total Students]
-val qualifyingStudents = ArrayList<QualifyingStudent>()
+private lateinit var qualifyingStudents: ArrayList<QualifyingStudent>
+
 @Composable
 @Preview
 fun QualifyingStudentList() {
-    sampleStudents.forEach { student ->
-        // Perform this in a separate function and apply qualifying logic
-        qualifyingStudents.add(QualifyingStudent(student, mutableStateOf(0)))
+    // find qualifying students
+    val sampleStudentsAL = sampleStudents.mapTo(arrayListOf()) {
+        it
     }
+    qualifyingStudents = CRUtilsKT.findQualifyingStudents(sampleStudentsAL)
+
     MaterialTheme {
         // TODO : Figure out a way to make Add button position constant and independent
         Column {
@@ -185,6 +188,26 @@ fun AskVotes() {
     }
 }
 
+@Composable
+fun ShowResult(result: ArrayList<QualifyingStudent>) {
+    MaterialTheme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            LazyColumn {
+                item {
+                    Text("Result :")
+                }
+                items(result) { std ->
+                    Text(std.student.name)
+                }
+            }
+        }
+    }
+}
+
 var currentState = mutableStateOf(0)
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
@@ -193,6 +216,7 @@ fun main() = application {
             1 -> TotalStudentList()
             2 -> QualifyingStudentList()
             3 -> AskVotes()
+            4 -> ShowResult(qualifyingStudents)
             else -> {
                 println("No more screens left!")
             }
