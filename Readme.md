@@ -5,8 +5,7 @@ A GUI based model to automate the election process of a Class Representative at 
 ### Technologies Used
 
 * **Backend** - Java, Kotlin
-* **Frontend** - Kotlin
-* **Database** - MySQL
+* **Frontend** - Jetbrains Compose [Kotlin]
 * **Frontend Design** - Figma
 
 ### Interface
