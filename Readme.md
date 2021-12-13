@@ -10,7 +10,7 @@ A GUI based model to automate the election process of a Class Representative at 
 
 ### Interface
 
-The graphical user interface allows the user to input the *Name*, *Registration Number*, *Branch*, *Course*, *Year*, *Section* *GPA* of the candidate, which then lists the names of all qualifying students based on a constraint that their GPA must be greater than 8.5/10.
+The graphical user interface allows the user to input the ***Name***, ***Registration Number***, ***Branch***, ***Course***, ***Year***, ***Section***, and ***GPA*** of the candidate, which then lists the names of all qualifying students based on a constraint that their GPA must be greater than 8.5/10.
 
 Then it will calculate the number of votes per qualified candidate and the candidate with highest votes will be elected as the CR. The last screen will show the name of the elected candidate.
 
